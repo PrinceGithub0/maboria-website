@@ -16,6 +16,10 @@ const translations: Record<"en" | "de", AppContent> = {
       { label: "Services", href: "/services" },
       { label: "About", href: "/about" },
       { label: "Contact", href: "/contact" },
+      { label: "Signup", href: "/signup" },
+      { label: "Dashboard", href: "/dashboard" },
+      { label: "Admin", href: "/admin" },
+      { label: "Login", href: "/login" },
     ],
     footer: { rights: "© 2025 Maboria", tagline: "IT Solutions", privacy: "Privacy", imprint: "Imprint" },
     home: {
@@ -84,6 +88,10 @@ const translations: Record<"en" | "de", AppContent> = {
       { label: "Leistungen", href: "/services" },
       { label: "Über uns", href: "/about" },
       { label: "Kontakt", href: "/contact" },
+      { label: "Registrieren", href: "/signup" },
+      { label: "Dashboard", href: "/dashboard" },
+      { label: "Admin", href: "/admin" },
+      { label: "Login", href: "/login" },
     ],
     footer: { rights: "© 2025 Maboria", tagline: "IT Solutions", privacy: "Datenschutz", imprint: "Impressum" },
     home: {

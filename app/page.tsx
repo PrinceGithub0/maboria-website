@@ -4,11 +4,19 @@ import Image from "next/image";
 import Link from "next/link";
 import { useI18n } from "@/components/I18nProvider";
 
+const deliveryPillars = [
+  { title: "Blueprints", desc: "Architecture, data contracts, and threat models you can audit." },
+  { title: "Paved paths", desc: "IaC, CI/CD, and PR templates to reduce drift and speed delivery." },
+  { title: "Runbooks", desc: "Incident, rollback, and handover guides to keep teams confident." },
+  { title: "Telemetry", desc: "Dashboards, alerts, and SLOs wired in from day one." },
+];
+
 export default function HomePage() {
   const { t } = useI18n();
 
   return (
     <div className="relative space-y-16">
+      {/* Hero */}
       <section className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 px-6 py-14 shadow-2xl md:px-12 lg:px-16">
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(56,189,248,0.08),transparent_25%),radial-gradient(circle_at_80%_0%,rgba(167,139,250,0.12),transparent_30%)]" />
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-white/0" />
@@ -22,7 +30,7 @@ export default function HomePage() {
               {t.home.hero.bullets.map((bullet: string) => (
                 <div key={bullet} className="flex items-start gap-2">
                   <span className="mt-1 inline-flex h-4 w-4 items-center justify-center rounded-full bg-cyan-500/20 text-[10px] text-cyan-200">
-                    ●
+                    •
                   </span>
                   <span>{bullet}</span>
                 </div>
@@ -74,6 +82,26 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Trust / metrics */}
+      <section className="grid gap-4 rounded-3xl border border-white/10 bg-white/5 p-6 text-sm text-slate-300 shadow-xl md:grid-cols-3 md:p-8">
+        <div className="space-y-1">
+          <p className="text-xs uppercase tracking-[0.35em] text-cyan-300">Coverage</p>
+          <p className="text-xl font-semibold text-white">Data · Cloud · CRM · Automation</p>
+          <p>SQL and BI foundations, customer automation, cloud resiliency.</p>
+        </div>
+        <div className="space-y-1">
+          <p className="text-xs uppercase tracking-[0.35em] text-cyan-300">Engagement</p>
+          <p className="text-xl font-semibold text-white">Embedded squads</p>
+          <p>Weekly KPIs, executive-ready reporting, transparent delivery.</p>
+        </div>
+        <div className="space-y-1">
+          <p className="text-xs uppercase tracking-[0.35em] text-cyan-300">Assurance</p>
+          <p className="text-xl font-semibold text-white">Security by design</p>
+          <p>Identity, access, and auditability baked into every project.</p>
+        </div>
+      </section>
+
+      {/* Services preview */}
       <section className="space-y-6">
         <div className="flex flex-col gap-3 text-center md:flex-row md:items-end md:justify-between md:text-left">
           <div>
@@ -99,19 +127,28 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="grid gap-8 rounded-3xl border border-white/10 bg-gradient-to-br from-white/5 via-black/40 to-white/5 p-8 shadow-xl md:grid-cols-[1.1fr_0.9fr] md:p-12">
+      {/* CTA + imagery */}
+      <section className="grid gap-10 rounded-3xl border border-white/10 bg-gradient-to-br from-white/5 via-black/40 to-white/5 p-8 shadow-xl md:grid-cols-[1.1fr_0.9fr] md:p-12">
         <div className="space-y-3">
           <p className="text-xs uppercase tracking-[0.35em] text-cyan-300">{t.home.highlights.title}</p>
           <h3 className="text-3xl font-semibold text-white md:text-4xl">{t.home.cta.title}</h3>
-          <p className="text-base text-slate-200 md:text-lg">
-            {t.home.hero.subtitle}
-          </p>
+          <p className="text-base text-slate-200 md:text-lg">{t.home.hero.subtitle}</p>
           <Link
             href="/contact"
             className="inline-flex items-center justify-center rounded-full bg-cyan-500 px-5 py-3 text-sm font-semibold text-slate-950 shadow-lg shadow-cyan-500/30 transition hover:-translate-y-0.5 hover:bg-cyan-400"
           >
             {t.home.cta.action}
           </Link>
+          <div className="grid gap-3 md:grid-cols-2">
+            <div className="rounded-2xl border border-white/10 bg-black/40 p-4">
+              <p className="text-xs uppercase tracking-[0.2em] text-slate-400">Process</p>
+              <p className="mt-2 text-sm text-slate-200">Discovery → Architecture → Delivery → Enablement</p>
+            </div>
+            <div className="rounded-2xl border border-white/10 bg-black/40 p-4">
+              <p className="text-xs uppercase tracking-[0.2em] text-slate-400">Assurance</p>
+              <p className="mt-2 text-sm text-slate-200">Runbooks, SLOs, observability, and quarterly reviews</p>
+            </div>
+          </div>
         </div>
         <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-black/40 shadow-lg">
           <Image
@@ -122,6 +159,59 @@ export default function HomePage() {
             className="h-full w-full rounded-2xl object-cover shadow-2xl shadow-cyan-500/20"
           />
           <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+        </div>
+      </section>
+
+      {/* Delivery playbook */}
+      <section className="space-y-6 rounded-3xl border border-white/10 bg-white/5 p-8 shadow-xl md:p-12">
+        <div className="flex flex-col gap-2">
+          <p className="text-xs uppercase tracking-[0.35em] text-cyan-300">Delivery playbook</p>
+          <h3 className="text-3xl font-semibold text-white md:text-4xl">How we ship reliable systems</h3>
+          <p className="max-w-3xl text-slate-300">
+            Opinionated standards for data models, CI/CD, observability, and change management so every release is auditable and safe.
+          </p>
+        </div>
+        <div className="grid gap-4 md:grid-cols-4">
+          {deliveryPillars.map((item) => (
+            <div key={item.title} className="rounded-2xl border border-white/10 bg-black/30 p-4">
+              <p className="text-sm font-semibold text-white">{item.title}</p>
+              <p className="mt-2 text-sm text-slate-300">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Dashboards */}
+      <section className="space-y-6 rounded-3xl border border-white/10 bg-white/5 p-8 shadow-xl md:p-12">
+        <div className="flex flex-col gap-2">
+          <p className="text-xs uppercase tracking-[0.35em] text-cyan-300">Dashboards</p>
+          <h3 className="text-3xl font-semibold text-white md:text-4xl">Operate and govern in one place</h3>
+          <p className="text-slate-300 md:text-lg">
+            Authenticated spaces to manage tickets, service requests, users, and delivery status—with role-based access.
+          </p>
+        </div>
+        <div className="grid gap-4 md:grid-cols-3">
+          <div className="rounded-2xl border border-white/10 bg-black/40 p-5">
+            <p className="text-sm font-semibold text-white">Client dashboard</p>
+            <p className="mt-2 text-sm text-slate-300">Create and track tickets, service requests, and profile data.</p>
+            <Link href="/dashboard" className="mt-3 inline-flex text-sm font-semibold text-cyan-200 hover:text-cyan-100">
+              Open dashboard →
+            </Link>
+          </div>
+          <div className="rounded-2xl border border-white/10 bg-black/40 p-5">
+            <p className="text-sm font-semibold text-white">Admin dashboard</p>
+            <p className="mt-2 text-sm text-slate-300">Full visibility across users, tickets, and service pipelines.</p>
+            <Link href="/admin" className="mt-3 inline-flex text-sm font-semibold text-cyan-200 hover:text-cyan-100">
+              Open admin →
+            </Link>
+          </div>
+          <div className="rounded-2xl border border-white/10 bg-black/40 p-5">
+            <p className="text-sm font-semibold text-white">Secure access</p>
+            <p className="mt-2 text-sm text-slate-300">JWT auth, rate limiting, and validation on every endpoint.</p>
+            <Link href="/login" className="mt-3 inline-flex text-sm font-semibold text-cyan-200 hover:text-cyan-100">
+              Login →
+            </Link>
+          </div>
         </div>
       </section>
     </div>

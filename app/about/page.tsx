@@ -26,7 +26,7 @@ export default function AboutPage() {
             <p className="mt-2 text-lg font-semibold text-white">Collins Eromosele</p>
             <p className="mt-2 text-sm text-slate-300">
               Collins brings a hands-on background in data engineering, cloud reliability, and automation-first delivery. He
-              founded Maboria to make enterprise technology clearer, faster, and accountable—with roadmaps that translate
+              founded Maboria to make enterprise technology clearer, faster, and accountable - with roadmaps that translate
               strategy into measurable impact.
             </p>
             <p className="mt-2 text-sm text-slate-400">
