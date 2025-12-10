@@ -74,6 +74,16 @@ export default function ServicesPage() {
     },
   };
 
+  const titleMap: Record<string, string> = {
+    "sql & data management": "SQL & Data Management",
+    "sql & datenmanagement": "SQL & Data Management",
+    "business intelligence": "Business Intelligence",
+    "business intelligence (bi)": "Business Intelligence",
+    "crm & automation": "CRM & Automation",
+    "cloud & platform": "Cloud & Platform",
+    "cloud & plattform": "Cloud & Platform",
+  };
+
   return (
     <div className="space-y-10">
       <section className="rounded-3xl border border-white/10 bg-white/5 px-6 py-12 shadow-2xl md:px-12">
@@ -90,7 +100,9 @@ export default function ServicesPage() {
             <div
               key={card.title}
               onClick={() => {
-                const detail = serviceDetails[card.title];
+                const normalized = card.title.toLowerCase();
+                const mappedTitle = titleMap[normalized] ?? card.title;
+                const detail = serviceDetails[mappedTitle];
                 setSelected(detail ?? null);
               }}
               className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-6 shadow-lg transition hover:-translate-y-1 hover:border-cyan-300/40 hover:shadow-cyan-500/20 cursor-pointer"
