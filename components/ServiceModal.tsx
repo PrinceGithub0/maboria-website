@@ -21,20 +21,32 @@ export function ServiceModal({ open, onClose, service }: Props) {
   useEffect(() => {
     if (open) {
       document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
+      const handler = (e: KeyboardEvent) => {
+        if (e.key === "Escape") onClose();
+      };
+      window.addEventListener("keydown", handler);
+      return () => {
+        document.body.style.overflow = "";
+        window.removeEventListener("keydown", handler);
+      };
     }
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [open]);
+    document.body.style.overflow = "";
+  }, [open, onClose]);
 
   if (!open || !service) return null;
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center px-4 py-8">
-      <div className="fixed inset-0 bg-black/70 backdrop-blur-sm transition-opacity" onClick={onClose} aria-hidden="true" />
-      <div className="relative z-10 w-full max-w-5xl overflow-hidden rounded-3xl border border-white/10 bg-black/80 shadow-2xl shadow-cyan-500/20">
+      <div
+        className="fixed inset-0 bg-black/70 backdrop-blur-sm transition-opacity animate-fade-in"
+        onClick={onClose}
+        aria-hidden="true"
+      />
+      <div
+        role="dialog"
+        aria-modal="true"
+        className="relative z-10 w-full max-w-5xl overflow-hidden rounded-3xl border border-white/10 bg-black/80 shadow-2xl shadow-cyan-500/20 animate-fade-in"
+      >
         <div className="grid gap-0 md:grid-cols-[1.1fr_0.9fr]">
           <div className="relative h-full bg-gradient-to-br from-white/5 via-black/50 to-white/5">
             <Image
@@ -56,10 +68,10 @@ export function ServiceModal({ open, onClose, service }: Props) {
               </div>
               <button
                 onClick={onClose}
-                className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-semibold text-slate-200 transition hover:border-cyan-300 hover:text-white"
+                className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/5 text-sm font-semibold text-slate-200 transition hover:border-cyan-300 hover:text-white"
                 aria-label="Close modal"
               >
-                Close
+                ×
               </button>
             </div>
             <p className="text-sm text-slate-200">{service.description}</p>
@@ -72,7 +84,7 @@ export function ServiceModal({ open, onClose, service }: Props) {
               >
                 Request Demo
               </button>
-              <p className="text-xs text-slate-500">Swap the preview images in /public/service-previews with real product shots anytime.</p>
+              <p className="text-xs text-slate-500">Swap /public/service-previews/* with real screenshots any time.</p>
             </div>
           </div>
         </div>
