@@ -50,6 +50,71 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+
+      <section className="space-y-6 rounded-3xl border border-white/10 bg-white/5 p-8 shadow-xl md:p-12">
+        <div className="flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
+          <div>
+            <p className="text-xs uppercase tracking-[0.35em] text-cyan-300">Leadership</p>
+            <h2 className="text-3xl font-semibold text-white md:text-4xl">Guided by builders and operators</h2>
+            <p className="text-slate-300 md:text-lg">Hands-on leaders across data, cloud, automation, and security.</p>
+          </div>
+          <p className="text-sm text-slate-400">Available for executive steering and architecture reviews.</p>
+        </div>
+        <div className="grid gap-4 md:grid-cols-3">
+          {[
+            { name: "Collins Eromosele", role: "Founder · Delivery", focus: "Data reliability, automation-first delivery, and SLO design." },
+            { name: "A. Morgan", role: "Cloud & Security", focus: "Landing zones, identity, and compliant multi-region rollouts." },
+            { name: "J. Patel", role: "RevOps & CRM", focus: "Pipeline design, lifecycle automation, and adoption metrics." },
+          ].map((leader) => (
+            <div key={leader.name} className="rounded-2xl border border-white/10 bg-black/30 p-4">
+              <p className="text-lg font-semibold text-white">{leader.name}</p>
+              <p className="text-sm text-cyan-200">{leader.role}</p>
+              <p className="mt-2 text-sm text-slate-300">{leader.focus}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="space-y-6 rounded-3xl border border-white/10 bg-white/5 p-8 shadow-xl md:p-12">
+        <div className="flex flex-col gap-2">
+          <p className="text-xs uppercase tracking-[0.35em] text-cyan-300">Global delivery</p>
+          <h2 className="text-3xl font-semibold text-white md:text-4xl">Follow-the-sun coverage</h2>
+          <p className="text-slate-300 md:text-lg">Distributed teams for continuity, velocity, and rapid response.</p>
+        </div>
+        <div className="grid gap-4 md:grid-cols-4">
+          {[
+            { title: "Europe", desc: "Frankfurt · London · Remote" },
+            { title: "North America", desc: "New York · Remote" },
+            { title: "Cloud Regions", desc: "Multi-region architectures with compliance guardrails." },
+            { title: "Engagement", desc: "On-site sprints or fully remote embedded squads." },
+          ].map((item) => (
+            <div key={item.title} className="rounded-2xl border border-white/10 bg-black/30 p-4">
+              <p className="text-sm font-semibold text-white">{item.title}</p>
+              <p className="mt-2 text-sm text-slate-300">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="space-y-6 rounded-3xl border border-white/10 bg-white/5 p-8 shadow-xl md:p-12">
+        <div className="flex flex-col gap-2">
+          <p className="text-xs uppercase tracking-[0.35em] text-cyan-300">Why Maboria</p>
+          <h2 className="text-3xl font-semibold text-white md:text-4xl">Clarity, safety, and execution</h2>
+          <p className="text-slate-300 md:text-lg">We combine architecture discipline with measurable delivery.</p>
+        </div>
+        <div className="grid gap-4 md:grid-cols-3">
+          {[
+            { title: "Auditability", desc: "Runbooks, change logs, and decision records for every release." },
+            { title: "Security by design", desc: "Identity, access, and data protection embedded in blueprints." },
+            { title: "Enablement", desc: "We leave teams with playbooks, dashboards, and training." },
+          ].map((item) => (
+            <div key={item.title} className="rounded-2xl border border-white/10 bg-black/30 p-4">
+              <p className="text-sm font-semibold text-white">{item.title}</p>
+              <p className="mt-2 text-sm text-slate-300">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
     </div>
   );
 }

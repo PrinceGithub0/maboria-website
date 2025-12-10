@@ -11,6 +11,23 @@ const deliveryPillars = [
   { title: "Telemetry", desc: "Dashboards, alerts, and SLOs wired in from day one." },
 ];
 
+const logos = ["Artemis", "Northwind", "BlueSky", "Helios", "Vertex", "NovaOps"];
+
+const solutions = [
+  { title: "Data Reliability", desc: "Automated backups, migrations, and drift detection for SQL fleets.", link: "/services" },
+  { title: "BI & Analytics", desc: "Executive-ready dashboards, KPI layers, and governed metrics.", link: "/services" },
+  { title: "CRM & RevOps", desc: "Pipeline design, playbooks, and automation for revenue teams.", link: "/services" },
+  { title: "Cloud Foundations", desc: "Landing zones, identity, guardrails, and zero-downtime rollouts.", link: "/services" },
+  { title: "Automation Fabric", desc: "Event-driven workflows, integrations, and SLA-backed queues.", link: "/services" },
+  { title: "Observability", desc: "Unified logs, traces, metrics, and alerting mapped to SLOs.", link: "/services" },
+];
+
+const caseStudies = [
+  { title: "Global Retail", result: "Reduced incident time by 63%", detail: "Implemented observability, rollback playbooks, and SLOs for 120+ services." },
+  { title: "Fintech Platform", result: "Cut reporting latency 5x", detail: "Delivered semantic layer, governed KPIs, and CFO-ready analytics packs." },
+  { title: "B2B SaaS", result: "Lifted CRM conversion 18%", detail: "Revamped pipeline automations, routing, and lifecycle playbooks." },
+];
+
 export default function HomePage() {
   const { t } = useI18n();
 
@@ -82,6 +99,18 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Logos */}
+      <section className="rounded-3xl border border-white/10 bg-white/5 p-6 shadow-xl md:p-8">
+        <p className="text-center text-xs uppercase tracking-[0.35em] text-cyan-300">Trusted by modern teams</p>
+        <div className="mt-4 grid grid-cols-2 gap-3 text-center text-sm font-semibold text-slate-200 sm:grid-cols-3 md:grid-cols-6">
+          {logos.map((name) => (
+            <div key={name} className="rounded-xl border border-white/5 bg-black/20 px-3 py-2 shadow-inner shadow-black/20">
+              {name}
+            </div>
+          ))}
+        </div>
+      </section>
+
       {/* Trust / metrics */}
       <section className="grid gap-4 rounded-3xl border border-white/10 bg-white/5 p-6 text-sm text-slate-300 shadow-xl md:grid-cols-3 md:p-8">
         <div className="space-y-1">
@@ -122,6 +151,31 @@ export default function HomePage() {
             <div key={item.title} className="rounded-2xl border border-white/10 bg-white/5 p-5 shadow-lg">
               <p className="text-sm uppercase tracking-[0.2em] text-slate-400">{item.title}</p>
               <p className="mt-2 text-base text-slate-200">{item.description}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Solutions grid */}
+      <section className="space-y-4 rounded-3xl border border-white/10 bg-white/5 p-8 shadow-xl md:p-12">
+        <div className="flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
+          <div>
+            <p className="text-xs uppercase tracking-[0.35em] text-cyan-300">Solutions</p>
+            <h3 className="text-3xl font-semibold text-white md:text-4xl">Designed for scale and governance</h3>
+            <p className="text-slate-300 md:text-lg">Pick a starting point—each path includes delivery, observability, and enablement.</p>
+          </div>
+          <Link href="/services" className="text-sm font-semibold text-cyan-200 hover:text-cyan-100">
+            Explore services →
+          </Link>
+        </div>
+        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {solutions.map((s) => (
+            <div key={s.title} className="rounded-2xl border border-white/10 bg-black/30 p-5 shadow-lg transition hover:-translate-y-1 hover:border-cyan-300/40 hover:shadow-cyan-500/20">
+              <p className="text-lg font-semibold text-white">{s.title}</p>
+              <p className="mt-2 text-sm text-slate-300">{s.desc}</p>
+              <Link href={s.link} className="mt-3 inline-flex text-sm font-semibold text-cyan-200 hover:text-cyan-100">
+                Learn more →
+              </Link>
             </div>
           ))}
         </div>
@@ -176,6 +230,24 @@ export default function HomePage() {
             <div key={item.title} className="rounded-2xl border border-white/10 bg-black/30 p-4">
               <p className="text-sm font-semibold text-white">{item.title}</p>
               <p className="mt-2 text-sm text-slate-300">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Case studies */}
+      <section className="space-y-6 rounded-3xl border border-white/10 bg-white/5 p-8 shadow-xl md:p-12">
+        <div className="flex flex-col gap-2">
+          <p className="text-xs uppercase tracking-[0.35em] text-cyan-300">Impact</p>
+          <h3 className="text-3xl font-semibold text-white md:text-4xl">Outcomes we deliver</h3>
+          <p className="text-slate-300 md:text-lg">Measured by uptime, adoption, ROI, and shipping velocity.</p>
+        </div>
+        <div className="grid gap-4 md:grid-cols-3">
+          {caseStudies.map((c) => (
+            <div key={c.title} className="rounded-2xl border border-white/10 bg-black/40 p-5 shadow-lg">
+              <p className="text-sm uppercase tracking-[0.2em] text-slate-400">{c.title}</p>
+              <p className="mt-2 text-xl font-semibold text-white">{c.result}</p>
+              <p className="mt-2 text-sm text-slate-300">{c.detail}</p>
             </div>
           ))}
         </div>

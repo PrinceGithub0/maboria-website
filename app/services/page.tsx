@@ -91,6 +91,53 @@ export default function ServicesPage() {
           </div>
         </div>
       </section>
+
+      <section className="space-y-4 rounded-3xl border border-white/10 bg-white/5 p-8 shadow-xl md:p-12">
+        <div className="flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
+          <div>
+            <p className="text-xs uppercase tracking-[0.35em] text-cyan-300">Engagement model</p>
+            <h2 className="text-3xl font-semibold text-white md:text-4xl">From discovery to steady-state</h2>
+            <p className="text-slate-300 md:text-lg">Structured phases with measurable checkpoints.</p>
+          </div>
+          <p className="text-sm text-slate-300">SLA-backed, with runbooks and handover.</p>
+        </div>
+        <div className="grid gap-4 md:grid-cols-4">
+          {[
+            { title: "Discovery", desc: "Current state, risks, goals, and KPI alignment." },
+            { title: "Blueprint", desc: "Architecture, security model, and delivery plan." },
+            { title: "Build & Launch", desc: "Iterative releases with observability and rollbacks." },
+            { title: "Operate", desc: "SLOs, runbooks, and quarterly improvements." },
+          ].map((step) => (
+            <div key={step.title} className="rounded-2xl border border-white/10 bg-black/30 p-4">
+              <p className="text-sm font-semibold text-white">{step.title}</p>
+              <p className="mt-2 text-sm text-slate-300">{step.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="space-y-4 rounded-3xl border border-white/10 bg-white/5 p-8 shadow-xl md:p-12">
+        <div className="flex flex-col gap-2">
+          <p className="text-xs uppercase tracking-[0.35em] text-cyan-300">Support</p>
+          <h2 className="text-3xl font-semibold text-white md:text-4xl">SLA tiers</h2>
+          <p className="text-slate-300 md:text-lg">Choose coverage that matches your criticality and hours.</p>
+        </div>
+        <div className="grid gap-4 md:grid-cols-3">
+          {[
+            { name: "Essential", sla: "8x5", response: "< 4h", desc: "Core support, planned releases, monthly reviews." },
+            { name: "Standard", sla: "12x5", response: "< 2h", desc: "Operational coverage, weekly KPIs, incident runbooks." },
+            { name: "Mission Critical", sla: "24x7", response: "< 30m", desc: "Always-on, executive comms, post-incident reports." },
+          ].map((tier) => (
+            <div key={tier.name} className="rounded-2xl border border-white/10 bg-black/40 p-5 shadow-lg">
+              <p className="text-lg font-semibold text-white">{tier.name}</p>
+              <p className="mt-1 text-sm text-cyan-200">
+                SLA: {tier.sla} · Response: {tier.response}
+              </p>
+              <p className="mt-2 text-sm text-slate-300">{tier.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
     </div>
   );
 }
