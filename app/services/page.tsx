@@ -49,28 +49,28 @@ export default function ServicesPage() {
       title: "SQL & Data Management",
       subtitle: "Performance, reliability, and governance for mission-critical data.",
       description: "Architecture, performance tuning, migrations, backups, and governance with auditable change control.",
-      image: "/service-previews/sql.png",
+      image: "/service-previews/sql.svg",
     },
     "Business Intelligence": {
       key: "bi",
       title: "Business Intelligence",
       subtitle: "Executive-ready analytics and governed metrics.",
       description: "Dashboards, reporting layers, and KPI models with semantic consistency and stakeholder-ready views.",
-      image: "/service-previews/bi.png",
+      image: "/service-previews/bi.svg",
     },
     "CRM & Automation": {
       key: "crm",
       title: "CRM & Automation",
       subtitle: "Revenue-grade pipelines and lifecycle automation.",
       description: "CRM setup, playbooks, routing, and workflow automation to drive adoption and conversion lift.",
-      image: "/service-previews/crm.png",
+      image: "/service-previews/crm.svg",
     },
     "Cloud & Platform": {
       key: "cloud",
       title: "Cloud & Platform",
       subtitle: "Landing zones, guardrails, and zero-downtime delivery.",
       description: "Identity, cost controls, monitoring, and resilient deployments for secure, compliant platforms.",
-      image: "/service-previews/cloud.png",
+      image: "/service-previews/cloud.svg",
     },
   };
 
