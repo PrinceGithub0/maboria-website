@@ -2,6 +2,8 @@
 
 import Image from "next/image";
 import { useI18n } from "@/components/I18nProvider";
+import { useState } from "react";
+import { ServiceModal, type ServiceDetail } from "@/components/ServiceModal";
 
 const serviceIcons = [
   () => (
@@ -39,6 +41,38 @@ const serviceIcons = [
 export default function ServicesPage() {
   const { t } = useI18n();
   const cards = t.servicesPage.cards;
+  const [selected, setSelected] = useState<ServiceDetail | null>(null);
+
+  const serviceDetails: Record<string, ServiceDetail> = {
+    "SQL & Data Management": {
+      key: "sql",
+      title: "SQL & Data Management",
+      subtitle: "Performance, reliability, and governance for mission-critical data.",
+      description: "Architecture, performance tuning, migrations, backups, and governance with auditable change control.",
+      image: "/service-previews/sql.png",
+    },
+    "Business Intelligence": {
+      key: "bi",
+      title: "Business Intelligence",
+      subtitle: "Executive-ready analytics and governed metrics.",
+      description: "Dashboards, reporting layers, and KPI models with semantic consistency and stakeholder-ready views.",
+      image: "/service-previews/bi.png",
+    },
+    "CRM & Automation": {
+      key: "crm",
+      title: "CRM & Automation",
+      subtitle: "Revenue-grade pipelines and lifecycle automation.",
+      description: "CRM setup, playbooks, routing, and workflow automation to drive adoption and conversion lift.",
+      image: "/service-previews/crm.png",
+    },
+    "Cloud & Platform": {
+      key: "cloud",
+      title: "Cloud & Platform",
+      subtitle: "Landing zones, guardrails, and zero-downtime delivery.",
+      description: "Identity, cost controls, monitoring, and resilient deployments for secure, compliant platforms.",
+      image: "/service-previews/cloud.png",
+    },
+  };
 
   return (
     <div className="space-y-10">
@@ -55,7 +89,11 @@ export default function ServicesPage() {
           {cards.map((card: { title: string; description: string }, idx: number) => (
             <div
               key={card.title}
-              className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-6 shadow-lg transition hover:-translate-y-1 hover:border-cyan-300/40 hover:shadow-cyan-500/20"
+              onClick={() => {
+                const detail = serviceDetails[card.title];
+                setSelected(detail ?? null);
+              }}
+              className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-6 shadow-lg transition hover:-translate-y-1 hover:border-cyan-300/40 hover:shadow-cyan-500/20 cursor-pointer"
             >
               <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-white/0 via-white/0 to-white/5 opacity-0 transition duration-300 group-hover:opacity-100" />
               <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-cyan-500/15 text-cyan-300 ring-1 ring-cyan-400/30">
@@ -63,6 +101,7 @@ export default function ServicesPage() {
               </div>
               <h3 className="text-xl font-semibold text-white">{card.title}</h3>
               <p className="mt-3 text-sm text-slate-300">{card.description}</p>
+              <p className="mt-3 text-xs uppercase tracking-[0.15em] text-cyan-200">Click to preview</p>
             </div>
           ))}
         </div>
@@ -138,6 +177,8 @@ export default function ServicesPage() {
           ))}
         </div>
       </section>
+
+      <ServiceModal open={!!selected} onClose={() => setSelected(null)} service={selected ?? undefined} />
     </div>
   );
 }
