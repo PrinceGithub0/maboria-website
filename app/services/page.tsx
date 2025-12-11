@@ -39,7 +39,7 @@ const serviceIcons = [
 ];
 
 export default function ServicesPage() {
-  const { t, lang } = useI18n() as any;
+  const { t, lang } = useI18n() as { t: any; lang: "en" | "de" };
   const cards = t.servicesPage.cards;
   const [selected, setSelected] = useState<ServiceDetail | null>(null);
 
@@ -113,7 +113,7 @@ export default function ServicesPage() {
       <section className="rounded-3xl border border-white/10 bg-white/5 px-6 py-12 shadow-2xl md:px-12">
         <p className="text-xs uppercase tracking-[0.35em] text-cyan-300">{t.servicesPage.title}</p>
         <h1 className="mt-3 text-4xl font-semibold text-white md:text-5xl">{t.servicesPage.lead}</h1>
-        <p className="mt-4 max-w-3xl text-lg text-slate-200">{t.home.hero.subtitle}</p>
+        <p className="mt-4 max-w-3xl text-lg text-slate-200">{t.servicesPage.subheading ?? t.home.hero.subtitle}</p>
       </section>
 
       <section className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
@@ -149,13 +149,17 @@ export default function ServicesPage() {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-xs uppercase tracking-[0.3em] text-slate-400">{lang === "de" ? "Lieferung" : "Delivery"}</p>
-                <p className="text-lg font-semibold text-white">Analytics Snapshot</p>
+                <p className="text-lg font-semibold text-white">
+                  {lang === "de" ? "Analytics-Uebersicht" : "Analytics Snapshot"}
+                </p>
               </div>
-              <span className="rounded-full bg-green-400/15 px-3 py-1 text-xs font-semibold text-green-200">Live</span>
+              <span className="rounded-full bg-green-400/15 px-3 py-1 text-xs font-semibold text-green-200">
+                {lang === "de" ? "Live" : "Live"}
+              </span>
             </div>
             <Image
               src="/images/close-up-server-hub-it-professional-debugging-optimizing-code.jpg"
-              alt="IT professional managing server hub"
+              alt={lang === "de" ? "IT-Professional verwaltet Server" : "IT professional managing server hub"}
               width={1200}
               height={800}
               className="h-auto w-full rounded-2xl border border-white/10 object-cover shadow-2xl shadow-cyan-500/20"
