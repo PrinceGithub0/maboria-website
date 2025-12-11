@@ -40,7 +40,20 @@ const serviceIcons = [
 
 export default function ServicesPage() {
   const { t, lang } = useI18n() as { t: any; lang: "en" | "de" };
-  const cards = t.servicesPage.cards;
+  const cards = t.servicesPage.cards.map((c: { title: string; description: string }) => {
+    if (lang === "de") {
+      const german: Record<string, string> = {
+        "SQL & Data Management": "Architektur, Performance, Migrationen, Backups und Governance.",
+        "Business Intelligence": "Dashboards, Reporting-Layer, KPI-Modelle und Analytics fuer Entscheider.",
+        "CRM & Automation": "CRM-Einrichtung, Pipeline-Design, Playbooks und Workflow-Automation.",
+        "Cloud & Platform": "Landing Zones, Monitoring, Kostenkontrolle und Deployments ohne Ausfall.",
+      };
+      const normalized = c.title.toLowerCase();
+      const mapped = titleMap[normalized] ?? c.title;
+      return { ...c, description: german[mapped] ?? c.description };
+    }
+    return c;
+  });
   const [selected, setSelected] = useState<ServiceDetail | null>(null);
 
   const serviceDetails: Record<string, ServiceDetail> = {
