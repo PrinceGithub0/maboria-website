@@ -121,22 +121,22 @@ const translations: Record<"en" | "de", AppContent> = {
       },
       cta: { title: "Bereit für Ihren Fahrplan?", action: "Mit Expert:innen sprechen" },
     },
-    servicesPage: {
+            servicesPage: {
       title: "Leistungen",
-      lead: "Entwickelt für zuverlässige, beobachtbare und skalierbare Plattformen.",
+      lead: "Entwickelt fuer zuverlaessige, beobachtbare und skalierbare Plattformen.",
       cards: [
         { title: "SQL & Datenmanagement", description: "Architektur, Performance, Migration, Backups und Governance." },
-        { title: "Business Intelligence", description: "Dashboards, Reporting-Layer, KPI-Modelle und Analytics für Entscheider." },
+        { title: "Business Intelligence", description: "Dashboards, Reporting-Layer, KPI-Modelle und Analytics fuer Entscheider." },
         { title: "CRM & Automation", description: "CRM-Einrichtung, Pipeline-Design, Playbooks und Workflow-Automation." },
         { title: "Cloud & Plattform", description: "Landing Zones, Monitoring, Kostenkontrolle und Deployments ohne Ausfall." },
       ],
     },
     aboutPage: {
-      title: "Über Maboria",
+      title: "Ueber Maboria",
       mission:
-        "Wir bauen Systeme, die verfügbar, verständlich und anpassungsfähig bleiben - damit Ihre Teams schneller und sicherer liefern.",
+        "Wir bauen Systeme, die verfuegbar, verstaendlich und anpassungsfaehig bleiben - damit Ihre Teams schneller und sicherer liefern.",
       values: [
-        { title: "Zuverlässigkeit", description: "Messbare SLAs, Desaster-Vorsorge und disziplinierter Change-Prozess." },
+        { title: "Zuverlaessigkeit", description: "Messbare SLAs, Desaster-Vorsorge und disziplinierter Change-Prozess." },
         { title: "Klarheit", description: "Transparente Architektur, saubere Dokumentation und nachvollziehbare Entscheidungen." },
         { title: "Innovation", description: "Moderne Daten-Stacks, Automation-first und cloud-native Patterns." },
         { title: "Partnerschaft", description: "Eingebettete Teams mit Fokus auf Ergebnisse, Enablement und Wissenstransfer." },
@@ -144,42 +144,14 @@ const translations: Record<"en" | "de", AppContent> = {
       story: "Senior-Architekten, Data Engineers, CRM-Spezialisten und Cloud-Reliability-Leads in einem Team.",
     },
     contactPage: {
-      title: "Lassen Sie uns den nächsten Schritt planen",
+      title: "Lassen Sie uns den naechsten Schritt planen",
       subtitle:
-        "Teilen Sie Ihre Ziele für SQL, BI, CRM, Cloud oder Automation. Wir melden uns innerhalb eines Geschäftstages mit einem klaren Plan.",
+        "Teilen Sie Ihre Ziele fuer SQL, BI, CRM, Cloud oder Automation. Wir melden uns innerhalb eines Geschaeftstages mit einem klaren Plan.",
       info: [
         { title: "E-Mail", detail: "contact@maboria.com" },
-        { title: "Reaktionszeit", detail: "Innerhalb eines Geschäftstages" },
+        { title: "Reaktionszeit", detail: "Innerhalb eines Geschaeftstages" },
         { title: "Zusammenarbeit", detail: "Remote oder vor Ort" },
       ],
       cta: "Nachricht senden",
     },
-  },
-};
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
-  return (
-    <html lang="en" suppressHydrationWarning>
-      <body className="bg-gradient-to-b from-[#05060a] via-[#070a12] to-[#03040a] text-slate-50 antialiased">
-        <I18nProvider translations={translations}>
-          <div className="relative min-h-screen overflow-hidden">
-            <div className="pointer-events-none absolute inset-0 opacity-60">
-              <div className="absolute -left-32 top-0 h-80 w-80 rounded-full bg-cyan-500/20 blur-3xl" />
-              <div className="absolute right-0 top-10 h-72 w-72 rounded-full bg-indigo-500/15 blur-3xl" />
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(56,189,248,0.15),transparent_28%),radial-gradient(circle_at_80%_0%,rgba(99,102,241,0.18),transparent_30%),radial-gradient(circle_at_50%_80%,rgba(14,165,233,0.12),transparent_30%)]" />
-            </div>
-            <Navbar />
-            <main className="relative mx-auto flex max-w-6xl flex-col gap-16 px-6 pb-20 pt-12 md:px-10 lg:px-0">
-              {children}
-            </main>
-            <Footer />
-          </div>
-        </I18nProvider>
-      </body>
-    </html>
-  );
-}
