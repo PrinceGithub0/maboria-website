@@ -15,9 +15,10 @@ type Props = {
   open: boolean;
   onClose: () => void;
   service?: ServiceDetail;
+  lang?: "en" | "de";
 };
 
-export function ServiceModal({ open, onClose, service }: Props) {
+export function ServiceModal({ open, onClose, service, lang = "en" }: Props) {
   useEffect(() => {
     if (open) {
       document.body.style.overflow = "hidden";
@@ -62,7 +63,9 @@ export function ServiceModal({ open, onClose, service }: Props) {
           <div className="grid gap-4 p-6">
             <div className="flex items-start justify-between gap-4">
               <div>
-                <p className="text-sm uppercase tracking-[0.25em] text-cyan-300">Service</p>
+                <p className="text-sm uppercase tracking-[0.25em] text-cyan-300">
+                  {lang === "de" ? "Leistung" : "Service"}
+                </p>
                 <p className="text-2xl font-semibold text-white">{service.title}</p>
                 <p className="text-sm text-cyan-200">{service.subtitle}</p>
               </div>
@@ -82,9 +85,13 @@ export function ServiceModal({ open, onClose, service }: Props) {
                 }}
                 className="inline-flex items-center justify-center rounded-full bg-cyan-500 px-5 py-3 text-sm font-semibold text-slate-950 shadow-lg shadow-cyan-500/30 transition hover:-translate-y-0.5 hover:bg-cyan-400"
               >
-                Request Demo
+                {lang === "de" ? "Demo anfragen" : "Request Demo"}
               </button>
-              <p className="text-xs text-slate-500">Swap /public/service-previews/* with real screenshots any time.</p>
+              <p className="text-xs text-slate-500">
+                {lang === "de"
+                  ? "Ersetzen Sie die Vorschau in /public/service-previews/* jederzeit durch echte Screenshots."
+                  : "Swap /public/service-previews/* with real screenshots any time."}
+              </p>
             </div>
           </div>
         </div>

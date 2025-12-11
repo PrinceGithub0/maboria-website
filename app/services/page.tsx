@@ -39,37 +39,61 @@ const serviceIcons = [
 ];
 
 export default function ServicesPage() {
-  const { t } = useI18n();
+  const { t, lang } = useI18n() as any;
   const cards = t.servicesPage.cards;
   const [selected, setSelected] = useState<ServiceDetail | null>(null);
 
   const serviceDetails: Record<string, ServiceDetail> = {
     "SQL & Data Management": {
       key: "sql",
-      title: "SQL & Data Management",
-      subtitle: "Performance, reliability, and governance for mission-critical data.",
-      description: "Architecture, performance tuning, migrations, backups, and governance with auditable change control.",
+      title: lang === "de" ? "SQL & Datenmanagement" : "SQL & Data Management",
+      subtitle:
+        lang === "de"
+          ? "Performance, Zuverlaessigkeit und Governance fuer geschaeftskritische Daten."
+          : "Performance, reliability, and governance for mission-critical data.",
+      description:
+        lang === "de"
+          ? "Architektur, Performance-Tuning, Migrationen, Backups und Governance mit nachvollziehbarer Aenderungskontrolle."
+          : "Architecture, performance tuning, migrations, backups, and governance with auditable change control.",
       image: "/service-previews/sql.svg",
     },
     "Business Intelligence": {
       key: "bi",
-      title: "Business Intelligence",
-      subtitle: "Executive-ready analytics and governed metrics.",
-      description: "Dashboards, reporting layers, and KPI models with semantic consistency and stakeholder-ready views.",
+      title: lang === "de" ? "Business Intelligence" : "Business Intelligence",
+      subtitle:
+        lang === "de"
+          ? "Executive-taugliche Analytics und gesteuerte KPIs."
+          : "Executive-ready analytics and governed metrics.",
+      description:
+        lang === "de"
+          ? "Dashboards, Reporting-Layer und KPI-Modelle mit semantischer Konsistenz und Management-Reports."
+          : "Dashboards, reporting layers, and KPI models with semantic consistency and stakeholder-ready views.",
       image: "/service-previews/bi.svg",
     },
     "CRM & Automation": {
       key: "crm",
-      title: "CRM & Automation",
-      subtitle: "Revenue-grade pipelines and lifecycle automation.",
-      description: "CRM setup, playbooks, routing, and workflow automation to drive adoption and conversion lift.",
+      title: lang === "de" ? "CRM & Automation" : "CRM & Automation",
+      subtitle:
+        lang === "de"
+          ? "Revenue-fertige Pipelines und Lifecycle-Automation."
+          : "Revenue-grade pipelines and lifecycle automation.",
+      description:
+        lang === "de"
+          ? "CRM-Setup, Playbooks, Routing und Workflow-Automation fuer Adoption und Conversion."
+          : "CRM setup, playbooks, routing, and workflow automation to drive adoption and conversion lift.",
       image: "/service-previews/crm.svg",
     },
     "Cloud & Platform": {
       key: "cloud",
-      title: "Cloud & Platform",
-      subtitle: "Landing zones, guardrails, and zero-downtime delivery.",
-      description: "Identity, cost controls, monitoring, and resilient deployments for secure, compliant platforms.",
+      title: lang === "de" ? "Cloud & Plattform" : "Cloud & Platform",
+      subtitle:
+        lang === "de"
+          ? "Landing Zones, Guardrails und Zero-Downtime-Delivery."
+          : "Landing zones, guardrails, and zero-downtime delivery.",
+      description:
+        lang === "de"
+          ? "Identity, Kostenkontrolle, Monitoring und resiliente Deployments fuer sichere, konforme Plattformen."
+          : "Identity, cost controls, monitoring, and resilient deployments for secure, compliant platforms.",
       image: "/service-previews/cloud.svg",
     },
   };
@@ -89,9 +113,7 @@ export default function ServicesPage() {
       <section className="rounded-3xl border border-white/10 bg-white/5 px-6 py-12 shadow-2xl md:px-12">
         <p className="text-xs uppercase tracking-[0.35em] text-cyan-300">{t.servicesPage.title}</p>
         <h1 className="mt-3 text-4xl font-semibold text-white md:text-5xl">{t.servicesPage.lead}</h1>
-        <p className="mt-4 max-w-3xl text-lg text-slate-200">
-          {t.home.hero.subtitle}
-        </p>
+        <p className="mt-4 max-w-3xl text-lg text-slate-200">{t.home.hero.subtitle}</p>
       </section>
 
       <section className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
@@ -105,7 +127,7 @@ export default function ServicesPage() {
                 const detail = serviceDetails[mappedTitle];
                 setSelected(detail ?? null);
               }}
-              className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-6 shadow-lg transition hover:-translate-y-1 hover:border-cyan-300/40 hover:shadow-cyan-500/20 cursor-pointer"
+              className="group relative cursor-pointer overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-6 shadow-lg transition hover:-translate-y-1 hover:border-cyan-300/40 hover:shadow-cyan-500/20"
             >
               <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-white/0 via-white/0 to-white/5 opacity-0 transition duration-300 group-hover:opacity-100" />
               <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-cyan-500/15 text-cyan-300 ring-1 ring-cyan-400/30">
@@ -113,7 +135,9 @@ export default function ServicesPage() {
               </div>
               <h3 className="text-xl font-semibold text-white">{card.title}</h3>
               <p className="mt-3 text-sm text-slate-300">{card.description}</p>
-              <p className="mt-3 text-xs uppercase tracking-[0.15em] text-cyan-200">Click to preview</p>
+              <p className="mt-3 text-xs uppercase tracking-[0.15em] text-cyan-200">
+                {lang === "de" ? "Zum Anzeigen klicken" : "Click to preview"}
+              </p>
             </div>
           ))}
         </div>
@@ -124,7 +148,7 @@ export default function ServicesPage() {
           <div className="relative space-y-4">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-xs uppercase tracking-[0.3em] text-slate-400">Delivery</p>
+                <p className="text-xs uppercase tracking-[0.3em] text-slate-400">{lang === "de" ? "Lieferung" : "Delivery"}</p>
                 <p className="text-lg font-semibold text-white">Analytics Snapshot</p>
               </div>
               <span className="rounded-full bg-green-400/15 px-3 py-1 text-xs font-semibold text-green-200">Live</span>
@@ -137,7 +161,9 @@ export default function ServicesPage() {
               className="h-auto w-full rounded-2xl border border-white/10 object-cover shadow-2xl shadow-cyan-500/20"
             />
             <p className="text-sm text-slate-300">
-              KPI dashboards, adoption metrics, and automation health for your stakeholders.
+              {lang === "de"
+                ? "KPI-Dashboards, Adoption-Kennzahlen und Automation-Health fuer Ihre Stakeholder."
+                : "KPI dashboards, adoption metrics, and automation health for your stakeholders."}
             </p>
           </div>
         </div>
@@ -146,18 +172,45 @@ export default function ServicesPage() {
       <section className="space-y-4 rounded-3xl border border-white/10 bg-white/5 p-8 shadow-xl md:p-12">
         <div className="flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
           <div>
-            <p className="text-xs uppercase tracking-[0.35em] text-cyan-300">Engagement model</p>
-            <h2 className="text-3xl font-semibold text-white md:text-4xl">From discovery to steady-state</h2>
-            <p className="text-slate-300 md:text-lg">Structured phases with measurable checkpoints.</p>
+            <p className="text-xs uppercase tracking-[0.35em] text-cyan-300">
+              {lang === "de" ? "Engagement-Modell" : "Engagement model"}
+            </p>
+            <h2 className="text-3xl font-semibold text-white md:text-4xl">
+              {lang === "de" ? "Vom Discovery bis zum Betrieb" : "From discovery to steady-state"}
+            </h2>
+            <p className="text-slate-300 md:text-lg">
+              {lang === "de" ? "Strukturierte Phasen mit messbaren Checkpoints." : "Structured phases with measurable checkpoints."}
+            </p>
           </div>
-          <p className="text-sm text-slate-300">SLA-backed, with runbooks and handover.</p>
+          <p className="text-sm text-slate-300">
+            {lang === "de" ? "SLA-gestuetzt, mit Runbooks und Uebergabe." : "SLA-backed, with runbooks and handover."}
+          </p>
         </div>
         <div className="grid gap-4 md:grid-cols-4">
           {[
-            { title: "Discovery", desc: "Current state, risks, goals, and KPI alignment." },
-            { title: "Blueprint", desc: "Architecture, security model, and delivery plan." },
-            { title: "Build & Launch", desc: "Iterative releases with observability and rollbacks." },
-            { title: "Operate", desc: "SLOs, runbooks, and quarterly improvements." },
+            {
+              title: lang === "de" ? "Discovery" : "Discovery",
+              desc: lang === "de" ? "Ist-Zustand, Risiken, Ziele und KPI-Abgleich." : "Current state, risks, goals, and KPI alignment.",
+            },
+            {
+              title: lang === "de" ? "Blueprint" : "Blueprint",
+              desc:
+                lang === "de"
+                  ? "Architektur, Sicherheitsmodell und Delivery-Plan."
+                  : "Architecture, security model, and delivery plan.",
+            },
+            {
+              title: lang === "de" ? "Build & Launch" : "Build & Launch",
+              desc:
+                lang === "de"
+                  ? "Iterative Releases mit Observability und Rollbacks."
+                  : "Iterative releases with observability and rollbacks.",
+            },
+            {
+              title: lang === "de" ? "Betrieb" : "Operate",
+              desc:
+                lang === "de" ? "SLOs, Runbooks und quartalsweise Verbesserungen." : "SLOs, runbooks, and quarterly improvements.",
+            },
           ].map((step) => (
             <div key={step.title} className="rounded-2xl border border-white/10 bg-black/30 p-4">
               <p className="text-sm font-semibold text-white">{step.title}</p>
@@ -169,28 +222,53 @@ export default function ServicesPage() {
 
       <section className="space-y-4 rounded-3xl border border-white/10 bg-white/5 p-8 shadow-xl md:p-12">
         <div className="flex flex-col gap-2">
-          <p className="text-xs uppercase tracking-[0.35em] text-cyan-300">Support</p>
-          <h2 className="text-3xl font-semibold text-white md:text-4xl">SLA tiers</h2>
-          <p className="text-slate-300 md:text-lg">Choose coverage that matches your criticality and hours.</p>
+          <p className="text-xs uppercase tracking-[0.35em] text-cyan-300">{lang === "de" ? "Support" : "Support"}</p>
+          <h2 className="text-3xl font-semibold text-white md:text-4xl">
+            {lang === "de" ? "SLA-Stufen" : "SLA tiers"}
+          </h2>
+          <p className="text-slate-300 md:text-lg">
+            {lang === "de"
+              ? "Waehlen Sie die Abdeckung, die zu Ihrer Kritikalitaet und Arbeitszeiten passt."
+              : "Choose coverage that matches your criticality and hours."}
+          </p>
         </div>
         <div className="grid gap-4 md:grid-cols-3">
           {[
-            { name: "Essential", sla: "8x5", response: "< 4h", desc: "Core support, planned releases, monthly reviews." },
-            { name: "Standard", sla: "12x5", response: "< 2h", desc: "Operational coverage, weekly KPIs, incident runbooks." },
-            { name: "Mission Critical", sla: "24x7", response: "< 30m", desc: "Always-on, executive comms, post-incident reports." },
+            {
+              name: lang === "de" ? "Essential" : "Essential",
+              sla: "8x5",
+              response: "< 4h",
+              desc: lang === "de" ? "Kernsupport, geplante Releases, monatliche Reviews." : "Core support, planned releases, monthly reviews.",
+            },
+            {
+              name: lang === "de" ? "Standard" : "Standard",
+              sla: "12x5",
+              response: "< 2h",
+              desc:
+                lang === "de"
+                  ? "Operative Abdeckung, woechentliche KPIs, Incident-Runbooks."
+                  : "Operational coverage, weekly KPIs, incident runbooks.",
+            },
+            {
+              name: lang === "de" ? "Mission Critical" : "Mission Critical",
+              sla: "24x7",
+              response: "< 30m",
+              desc:
+                lang === "de"
+                  ? "Always-on, Executive-Kommunikation, Post-Incident-Reports."
+                  : "Always-on, executive comms, post-incident reports.",
+            },
           ].map((tier) => (
             <div key={tier.name} className="rounded-2xl border border-white/10 bg-black/40 p-5 shadow-lg">
               <p className="text-lg font-semibold text-white">{tier.name}</p>
-              <p className="mt-1 text-sm text-cyan-200">
-                SLA: {tier.sla} · Response: {tier.response}
-              </p>
+              <p className="mt-1 text-sm text-cyan-200">SLA: {tier.sla} · Response: {tier.response}</p>
               <p className="mt-2 text-sm text-slate-300">{tier.desc}</p>
             </div>
           ))}
         </div>
       </section>
 
-      <ServiceModal open={!!selected} onClose={() => setSelected(null)} service={selected ?? undefined} />
+      <ServiceModal open={!!selected} onClose={() => setSelected(null)} service={selected ?? undefined} lang={lang} />
     </div>
   );
 }
