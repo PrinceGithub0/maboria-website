@@ -9,7 +9,7 @@ import { assertSameOrigin } from "@/lib/csrf";
 export async function POST(req: NextRequest) {
   try {
     assertSameOrigin(req);
-    const ip = req.ip ?? req.headers.get("x-forwarded-for") ?? "global";
+    const ip = req.headers.get("x-forwarded-for") ?? "global";
     if (!rateLimit(`login:${ip}`, 50, 60_000)) return fail("Too many requests", 429);
     const body = await req.json();
     const parsed = loginSchema.parse(body);

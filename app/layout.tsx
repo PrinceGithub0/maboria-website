@@ -16,12 +16,10 @@ const translations: Record<"en" | "de", AppContent> = {
       { label: "Services", href: "/services" },
       { label: "About", href: "/about" },
       { label: "Contact", href: "/contact" },
-      { label: "Signup", href: "/signup" },
-      { label: "Dashboard", href: "/dashboard" },
-      { label: "Admin", href: "/admin" },
       { label: "Login", href: "/login" },
+      { label: "Signup", href: "/signup" },
     ],
-    footer: { rights: "© 2025 Maboria", tagline: "IT Solutions", privacy: "Privacy", imprint: "Imprint" },
+    footer: { rights: "(c) 2025 Maboria", tagline: "IT Solutions", privacy: "Privacy", imprint: "Imprint" },
     home: {
       hero: {
         eyebrow: "Enterprise IT Partner",
@@ -52,6 +50,7 @@ const translations: Record<"en" | "de", AppContent> = {
     servicesPage: {
       title: "Services",
       lead: "Built to deliver reliable, observable, and scalable platforms.",
+      subheading: "We design, build, and operate data, BI, CRM, and cloud platforms with accountability.",
       cards: [
         { title: "SQL & Data Management", description: "Architecture, performance, migration, backup, and governance." },
         { title: "Business Intelligence", description: "Dashboards, reporting layers, KPI models, and executive-ready analytics." },
@@ -72,10 +71,10 @@ const translations: Record<"en" | "de", AppContent> = {
       story: "Senior architects, data engineers, CRM specialists, and cloud reliability leads working as one unit.",
     },
     contactPage: {
-      title: "Let's architect your next move",
+      title: "Let us plan your next move",
       subtitle: "Share your SQL, BI, CRM, cloud, or automation goals. Expect a tailored response within one business day.",
       info: [
-        { title: "Email", detail: "contact@maboria.com" },
+        { title: "Email", detail: "info@maboria.com" },
         { title: "Response", detail: "Within 1 business day" },
         { title: "Engagement", detail: "Remote or on-site" },
       ],
@@ -88,12 +87,10 @@ const translations: Record<"en" | "de", AppContent> = {
       { label: "Leistungen", href: "/services" },
       { label: "Ueber uns", href: "/about" },
       { label: "Kontakt", href: "/contact" },
-      { label: "Registrieren", href: "/signup" },
-      { label: "Dashboard", href: "/dashboard" },
-      { label: "Admin", href: "/admin" },
       { label: "Login", href: "/login" },
+      { label: "Registrieren", href: "/signup" },
     ],
-    footer: { rights: "© 2025 Maboria", tagline: "IT Solutions", privacy: "Datenschutz", imprint: "Impressum" },
+    footer: { rights: "(c) 2025 Maboria", tagline: "IT Solutions", privacy: "Datenschutz", imprint: "Impressum" },
     home: {
       hero: {
         eyebrow: "Ihr IT-Partner",
@@ -116,14 +113,18 @@ const translations: Record<"en" | "de", AppContent> = {
         items: [
           { title: "Outcome-getriebene Lieferung", description: "Roadmaps mit Meilensteinen, Adoption-Zielen und messbaren KPIs." },
           { title: "Security by Design", description: "Identitaeten, Berechtigungen und Datenschutz sind integriert." },
-          { title: "Transparenz fuer Entscheider", description: "Dashboards, Audits und Governance-Pakete fuer Management und Aufsicht." },
+          {
+            title: "Transparenz fuer Entscheider",
+            description: "Dashboards, Audits und Governance-Pakete fuer Management und Aufsicht.",
+          },
         ],
       },
-      cta: { title: "Bereit fuer Ihren Fahrplan?", action: "Mit Expert:innen sprechen" },
+      cta: { title: "Bereit fuer Ihren Fahrplan?", action: "Mit Expertinnen und Experten sprechen" },
     },
     servicesPage: {
       title: "Leistungen",
       lead: "Entwickelt fuer zuverlaessige, beobachtbare und skalierbare Plattformen.",
+      subheading: "Wir gestalten und betreiben Daten-, BI-, CRM- und Cloud-Plattformen mit klarer Verantwortung.",
       cards: [
         { title: "SQL & Datenmanagement", description: "Architektur, Performance, Migration, Backups und Governance." },
         { title: "Business Intelligence", description: "Dashboards, Reporting-Layer, KPI-Modelle und Analytics fuer Entscheider." },
@@ -144,11 +145,11 @@ const translations: Record<"en" | "de", AppContent> = {
       story: "Senior-Architekten, Data Engineers, CRM-Spezialisten und Cloud-Reliability-Leads in einem Team.",
     },
     contactPage: {
-      title: "Lassen Sie uns den naechsten Schritt planen",
+      title: "Planen wir Ihren naechsten Schritt",
       subtitle:
         "Teilen Sie Ihre Ziele fuer SQL, BI, CRM, Cloud oder Automation. Wir melden uns innerhalb eines Geschaeftstages mit einem klaren Plan.",
       info: [
-        { title: "E-Mail", detail: "contact@maboria.com" },
+        { title: "E-Mail", detail: "info@maboria.com" },
         { title: "Reaktionszeit", detail: "Innerhalb eines Geschaeftstages" },
         { title: "Zusammenarbeit", detail: "Remote oder vor Ort" },
       ],
@@ -163,7 +164,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning data-theme="dark">
       <body className="bg-gradient-to-b from-[#05060a] via-[#070a12] to-[#03040a] text-slate-50 antialiased">
         <I18nProvider translations={translations}>
           <div className="relative min-h-screen overflow-hidden">

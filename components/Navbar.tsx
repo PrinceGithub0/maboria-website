@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useI18n } from "./I18nProvider";
+import { ThemeToggle } from "./ThemeToggle";
 
 export function Navbar() {
   const { t, lang, setLang } = useI18n();
@@ -38,6 +39,7 @@ export function Navbar() {
               </Link>
             ))}
           </nav>
+          <ThemeToggle />
           <div className="flex items-center rounded-full border border-white/10 bg-white/5 p-1 text-xs font-semibold text-slate-200 shadow-md shadow-black/20">
             {(["en", "de"] as const).map((code) => (
               <button

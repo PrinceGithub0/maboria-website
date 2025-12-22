@@ -20,7 +20,7 @@ export async function POST(req: NextRequest) {
   try {
     const user = requireAuth(req);
     assertSameOrigin(req);
-    const ip = req.ip ?? req.headers.get("x-forwarded-for") ?? "global";
+    const ip = req.headers.get("x-forwarded-for") ?? "global";
     if (!rateLimit(`services-create:${ip}`, 30, 60_000)) return fail("Too many requests", 429);
     const body = await req.json();
     const parsed = serviceCreateSchema.parse(body);

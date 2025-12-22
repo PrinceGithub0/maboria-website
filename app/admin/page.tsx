@@ -5,39 +5,49 @@ import { useRouter } from "next/navigation";
 import { DashboardLayout } from "@/components/DashboardLayout";
 import { DataCard } from "@/components/DataCard";
 import { StatusBadge } from "@/components/StatusBadge";
-import type { Ticket, ServiceRequest, User } from "@/models/types";
+import type { Ticket, ServiceRequest, User, ContactMessage } from "@/models/types";
 
 export default function AdminPage() {
   const router = useRouter();
   const [tickets, setTickets] = useState<Ticket[]>([]);
   const [requests, setRequests] = useState<ServiceRequest[]>([]);
   const [users, setUsers] = useState<User[]>([]);
+  const [contacts, setContacts] = useState<ContactMessage[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function load() {
       try {
-        const [ticketRes, serviceRes, userRes] = await Promise.all([
+        const [ticketRes, serviceRes, userRes, contactRes] = await Promise.all([
           fetch("/api/tickets", { credentials: "include" }),
           fetch("/api/services", { credentials: "include" }),
           fetch("/api/admin/users", { credentials: "include" }).catch(() => null),
+          fetch("/api/admin/contacts", { credentials: "include" }).catch(() => null),
         ]);
-        if (ticketRes?.status === 401 || serviceRes?.status === 401 || userRes?.status === 401) {
+        if (
+          ticketRes?.status === 401 ||
+          serviceRes?.status === 401 ||
+          userRes?.status === 401 ||
+          contactRes?.status === 401
+        ) {
           router.push("/login");
           return;
         }
-        const [ticketJson, serviceJson, userJson] = await Promise.all([
+        const [ticketJson, serviceJson, userJson, contactJson] = await Promise.all([
           ticketRes.json(),
           serviceRes.json(),
           userRes ? userRes.json() : Promise.resolve({ data: [] }),
+          contactRes ? contactRes.json() : Promise.resolve({ data: [] }),
         ]);
         if (!ticketRes.ok) throw new Error(ticketJson.message || "Tickets error");
         if (!serviceRes.ok) throw new Error(serviceJson.message || "Services error");
         if (userRes && !userRes.ok) throw new Error(userJson.message || "Users error");
+        if (contactRes && !contactRes.ok) throw new Error(contactJson.message || "Contacts error");
         setTickets(ticketJson.data || []);
         setRequests(serviceJson.data || []);
         setUsers(userJson.data || []);
+        setContacts(contactJson.data || []);
       } catch (err) {
         setError(err instanceof Error ? err.message : "Failed to load admin data");
       } finally {
@@ -46,6 +56,12 @@ export default function AdminPage() {
     }
     load();
   }, [router]);
+
+  function formatDate(value: string) {
+    const date = new Date(value);
+    if (Number.isNaN(date.getTime())) return value;
+    return date.toISOString().slice(0, 10);
+  }
 
   return (
     <DashboardLayout title="Admin Dashboard" variant="admin">
@@ -96,6 +112,24 @@ export default function AdminPage() {
                 ))}
                 {requests.length === 0 && <p className="text-sm text-slate-400">No service requests available.</p>}
               </div>
+            </div>
+          </div>
+
+          <div>
+            <div className="mb-2 flex items-center justify-between">
+              <p className="text-sm font-semibold text-white">Contact Messages</p>
+            </div>
+            <div className="grid gap-3">
+              {contacts.map((message) => (
+                <DataCard
+                  key={message.id}
+                  title={message.name}
+                  subtitle={`${message.email} • ${formatDate(message.createdAt)}`}
+                >
+                  <p className="text-xs text-slate-300">{message.message}</p>
+                </DataCard>
+              ))}
+              {contacts.length === 0 && <p className="text-sm text-slate-400">No contact messages yet.</p>}
             </div>
           </div>
 

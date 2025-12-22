@@ -1,6 +1,7 @@
 import "server-only";
-import { createContactMessage } from "@/services/contactService";
+import { createContactMessage, listContactMessages } from "@/services/contactService";
 
 export const ContactController = {
   create: createContactMessage,
+  list: listContactMessages,
 };

@@ -74,7 +74,7 @@ export function ServiceModal({ open, onClose, service, lang = "en" }: Props) {
                 className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/5 text-sm font-semibold text-slate-200 transition hover:border-cyan-300 hover:text-white"
                 aria-label="Close modal"
               >
-                ×
+                x
               </button>
             </div>
             <p className="text-sm text-slate-200">{service.description}</p>
@@ -87,11 +87,6 @@ export function ServiceModal({ open, onClose, service, lang = "en" }: Props) {
               >
                 {lang === "de" ? "Demo anfragen" : "Request Demo"}
               </button>
-              <p className="text-xs text-slate-500">
-                {lang === "de"
-                  ? "Ersetzen Sie die Vorschau in /public/service-previews/* jederzeit durch echte Screenshots."
-                  : "Swap /public/service-previews/* with real screenshots any time."}
-              </p>
             </div>
           </div>
         </div>

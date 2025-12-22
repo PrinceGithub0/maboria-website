@@ -4,24 +4,24 @@ import { requireAuth } from "@/lib/auth";
 import { ok, handleError } from "@/lib/apiResponse";
 import { serviceUpdateSchema } from "@/validators/service";
 
-type Params = { params: { id: string } };
-
-export async function GET(req: NextRequest, { params }: Params) {
+export async function GET(req: NextRequest, context: { params: Promise<{ id: string }> }) {
   try {
+    const { id } = await context.params;
     const user = requireAuth(req);
-    const service = await ServiceRequestController.get(params.id, user.userId, user.role);
+    const service = await ServiceRequestController.get(id, user.userId, user.role);
     return ok(service);
   } catch (err) {
     return handleError(err);
   }
 }
 
-export async function PATCH(req: NextRequest, { params }: Params) {
+export async function PATCH(req: NextRequest, context: { params: Promise<{ id: string }> }) {
   try {
+    const { id } = await context.params;
     const user = requireAuth(req);
     const body = await req.json();
     const parsed = serviceUpdateSchema.parse(body);
-    const service = await ServiceRequestController.update(params.id, user.userId, user.role, parsed);
+    const service = await ServiceRequestController.update(id, user.userId, user.role, parsed);
     return ok(service);
   } catch (err) {
     return handleError(err);

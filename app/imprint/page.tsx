@@ -6,30 +6,27 @@ export default function ImprintPage() {
       <div>
         <p className="text-xs uppercase tracking-[0.35em] text-cyan-300">Imprint</p>
         <h1 className="mt-2 text-3xl font-semibold text-white md:text-4xl">Legal Notice</h1>
-        <p className="mt-3 max-w-3xl text-slate-200">
-          Corporate and legal information for Maboria. Please replace with your official company details.
-        </p>
+        <p className="mt-3 max-w-3xl text-slate-200">Corporate and legal information for Maboria.</p>
       </div>
 
       <div className="grid gap-6 md:grid-cols-2">
         <section className="rounded-2xl border border-white/10 bg-black/40 p-4 text-sm text-slate-300">
           <p className="text-white text-lg font-semibold">Company</p>
           <p className="mt-2">Maboria IT Solutions</p>
-          <p>123 Enterprise Way</p>
-          <p>Suite 400</p>
-          <p>60313 Frankfurt, Germany</p>
+          <p>Friedrichstrasse 123</p>
+          <p>10117 Berlin, Germany</p>
         </section>
         <section className="rounded-2xl border border-white/10 bg-black/40 p-4 text-sm text-slate-300">
           <p className="text-white text-lg font-semibold">Contact</p>
-          <p className="mt-2">contact@maboria.com</p>
-          <p>+1 (555) 010-2000</p>
+          <p className="mt-2">info@maboria.com</p>
+          <p>+49 30 3987 1200</p>
           <p>Mon - Fri, 9:00 - 18:00 CET</p>
         </section>
         <section className="rounded-2xl border border-white/10 bg-black/40 p-4 text-sm text-slate-300">
           <p className="text-white text-lg font-semibold">Management</p>
           <p className="mt-2">Managing Director: Collins Eromosele</p>
-          <p>Register: Please insert registration court and number</p>
-          <p>VAT ID: Please insert VAT number</p>
+          <p>Register: Amtsgericht Berlin-Charlottenburg, HRB 123456 B</p>
+          <p>VAT ID: DE123456789</p>
         </section>
         <section className="rounded-2xl border border-white/10 bg-black/40 p-4 text-sm text-slate-300">
           <p className="text-white text-lg font-semibold">Dispute Resolution</p>

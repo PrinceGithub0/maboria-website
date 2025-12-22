@@ -45,9 +45,9 @@ export default function PrivacyPage() {
 
       <div className="rounded-2xl border border-white/10 bg-black/30 p-4 text-sm text-slate-300">
         <p className="text-white font-semibold">Contact</p>
-        <p>privacy@maboria.com</p>
-        <p>+1 (555) 010-2000</p>
-        <p>123 Enterprise Way, Suite 400, Frankfurt / Remote</p>
+        <p>info@maboria.com</p>
+        <p>+49 30 3987 1200</p>
+        <p>Friedrichstrasse 123, 10117 Berlin, Germany</p>
       </div>
     </div>
   );
